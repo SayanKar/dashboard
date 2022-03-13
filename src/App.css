@@ -1,0 +1,235 @@
+html, body, .root {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  color: white;
+}
+.container {
+  width: 1980;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bgCircle1 {
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  background-color: rgba(255, 255 ,255, 0.3);
+  position: absolute;
+  background-image:
+    linear-gradient(
+      to bottom right, 
+      rgba(255, 255 ,255, 0.3), black 
+    );
+  top: 8%;
+  left: 11%;
+}
+
+.bgCircle2 {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  background-color: rgba(255, 255 ,255, 0.3);
+  position: absolute;
+  background-image:
+    linear-gradient(
+      to bottom right, 
+      rgba(255, 255 ,255, 0.3), black 
+    );
+  bottom: 18%;
+  right: 15%;
+}
+
+.bgCircle3 {
+  height: 130px;
+  width: 130px;
+  border-radius: 50%;
+  background-color: rgba(255, 255 ,255, 0.3);
+  position: absolute;
+  background-image:
+    linear-gradient(
+      to bottom right, 
+      rgba(255, 255 ,255, 0.3), black
+    );
+  bottom: 25%;
+  left: 15%;
+  animation-name: oscillate;
+  animation-duration: 5s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}
+
+.centerContainer {
+  background-color: rgba(0,0,0, 0.9);
+  height: 60%;
+  width: 30%;
+  min-width: 400px;
+  min-height: 475px;
+  z-index: 999;
+  border-radius: 20px;
+  color: white;
+  background-color: #222;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* background-color: green; */
+}
+
+.headerContainer {
+  display: flex;
+  width: 100%;
+  height: 18%;
+  justify-content: center;
+  align-items: center;
+}
+
+.logoContainer {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  height: 100%;
+  max-height: 70px;
+  background-color: #808080;
+  border-radius: 50%;
+}
+
+
+
+.heading {
+  margin-left: 3%;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.staking {
+  width: 100%;
+  height: 18%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.withdraw {
+  width: 100%;
+  height: 18%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input {
+  background-color: #2e3234;
+  color: white;
+  width: 50%;
+  height: 50px;
+  border-bottom-left-radius: 15px;
+  border-top-left-radius: 15px;
+  border: 1px solid #2e3234;
+  outline: none;
+  padding-left: 20px;
+}
+
+::placeholder {
+  font-size: 14px;
+  color: white;
+}
+
+.button {
+  width: 20%;
+  height: 55px;
+  background-color: #808080;
+  border-bottom-right-radius: 15px;
+  border-top-right-radius: 15px;
+  border: 1px solid #808080;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  cursor: pointer;
+}
+
+.icon {
+  height: 100%;
+  max-height: 30px;
+}
+
+.rewardsAndInfo {
+  width: 100%;
+  height: 40%;
+  background-color: #393939;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.rewardsContainer {
+  width: 100%;
+  height: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reward {
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.claimRewardsButton {
+  width: 100px;
+  height: 44px;
+  margin-left: 30px;
+  border-radius: 15px;
+  background-color: #808080;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.amountStaked {
+  width: 100%;
+  height: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vaultContainer {
+  width: 50%;
+  min-width: 270px;
+  height: 70%;
+  border: 3px solid rgb(73, 73, 73);
+  border-radius: 12px;
+  background-color: #7a7a7a;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.vault {
+  height: 100%;
+}
+
+.valueContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  height: 100%;
+  min-width: 120px;
+  color: white;
+  font-weight: 500;
+  font-size: 16px;
+} 
+
+
+@keyframes oscillate {
+  0% {left: 13%}
+  100% {left: 17%}
+}
