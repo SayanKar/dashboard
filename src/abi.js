@@ -1,5 +1,12 @@
 export const abi = [
 	{
+		"inputs": [],
+		"name": "Claim",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"inputs": [
 			{
 				"internalType": "address",
@@ -59,13 +66,6 @@ export const abi = [
 			}
 		],
 		"name": "Withdraw",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "claim",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"

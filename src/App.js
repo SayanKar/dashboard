@@ -11,7 +11,7 @@ import { ethers } from "ethers";
 import { abi } from "./abi.js";
 import { useAlert } from "react-alert";
 
-const CONTRACT_ADDRESS = "0x03BB8fee8D33Af220279aB300B28327f3fD71234";
+const CONTRACT_ADDRESS = "0xA3eFcDc4BF8D0f58A6eaAA32841aD6Eb02B9A162";
 
 function App() {
   const alert = useAlert();
@@ -65,13 +65,13 @@ function App() {
         let txn = await contract.Stake(parseInt(stakeAmount));
         alert.info("Transction Submitted");
         await txn.wait();
-        alert.success("Transaction Succesull");
+        alert.success("Transaction Successful");
         setStakeAmount("");
         getUnclaimedRewards();
         getStakedNfts();
       } catch (err) {
         console.log(err);
-        alert.error(err);
+        alert.error(err.error.message);
       }
     } else {
       alert.error("Connect To MetaMask");
@@ -88,13 +88,13 @@ function App() {
         let txn = await contract.Withdraw(parseInt(withdrawAmount));
         alert.info("Transction Submitted");
         await txn.wait();
-        alert.success("Transaction Succesull");
+        alert.success("Transaction Succesful");
         setWithdrawAmount("");
         getUnclaimedRewards();
         getStakedNfts();
       } catch (err) {
         console.log(err);
-        alert.error(err);
+        alert.error(err.error.message);
       }
     } else {
       alert.error("Connect To MetaMask");
@@ -107,12 +107,12 @@ function App() {
         let txn = await contract.Claim();
         alert.info("Transction Submitted");
         await txn.wait();
-        alert.success("Transaction Succesull");
+        alert.success("Transaction Succesful");
         getUnclaimedRewards();
         getStakedNfts();
       } catch (err) {
         console.log(err);
-        alert.error(err);
+        alert.error(err.error.message);
       }
     } else {
       alert.error("Connect To MetaMask");
