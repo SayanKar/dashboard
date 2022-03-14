@@ -4,26 +4,159 @@ html, body, .root {
   background-color: black;
   color: white;
 }
+
+img {
+  user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+}
+
 .container {
-  width: 1980;
+  width: 100%;
+  height: 89%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 8%;
+  padding: 10px 3%;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  margin: 0 7%;
+  background-color: white;
+}
+
+.leftNavContainer {
+  height: 100%;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+}
+
+.siteLogoContainer {
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.siteLogo {
+  height: 80%;
+  background-color: #808080;
+  border-radius: 50%;
+}
+
+.navLinks {
+  height: 100%;
+  width: fit-content;
+  padding: 0 0 0 80px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.navLink {
+  text-decoration: none;
+  color: white;
+  margin-right: 50px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+  font-weight: 500;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.link:hover {
+  font-weight: 400;
+}
+
+.rightNavContainer {
+  height: 100%;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+}
+
+.connectButton {
+  width: 200px;
+  height: 44px;
+  background-color: palevioletred;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  border: 2px solid rgb(209, 56, 107);
+  color: white;
+  cursor: pointer;
+  user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.connectedAccount {
+  width: 250px;
+  font-size: 18px;
+  font-weight: 400;
+  height: 44px;
+  background-color: palevioletred;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  border: 2px solid rgb(209, 56, 107);
+  color: white;
+  cursor: pointer;
+  user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.connectButton:hover {
+  font-weight: 500;
+}
+
+.connectButton:active {
+  background-color: rgb(253, 153, 186);
+}
+
 .bgCircle1 {
   height: 70px;
   width: 70px;
   border-radius: 50%;
-  background-color: rgba(255, 255 ,255, 0.3);
+  background-color: rgba(255, 255, 255, 0.3);
   position: absolute;
   background-image:
-    linear-gradient(
-      to bottom right, 
-      rgba(255, 255 ,255, 0.3), black 
-    );
-  top: 8%;
+    linear-gradient(to bottom right,
+      rgba(255, 255, 255, 0.3), black);
+  top: 20%;
   left: 11%;
 }
 
@@ -31,13 +164,11 @@ html, body, .root {
   height: 100px;
   width: 100px;
   border-radius: 50%;
-  background-color: rgba(255, 255 ,255, 0.3);
+  background-color: rgba(255, 255, 255, 0.3);
   position: absolute;
   background-image:
-    linear-gradient(
-      to bottom right, 
-      rgba(255, 255 ,255, 0.3), black 
-    );
+    linear-gradient(to bottom right,
+      rgba(255, 255, 255, 0.3), black);
   bottom: 18%;
   right: 15%;
 }
@@ -46,13 +177,11 @@ html, body, .root {
   height: 130px;
   width: 130px;
   border-radius: 50%;
-  background-color: rgba(255, 255 ,255, 0.3);
+  background-color: rgba(255, 255, 255, 0.3);
   position: absolute;
   background-image:
-    linear-gradient(
-      to bottom right, 
-      rgba(255, 255 ,255, 0.3), black
-    );
+    linear-gradient(to bottom right,
+      rgba(255, 255, 255, 0.3), black);
   bottom: 25%;
   left: 15%;
   animation-name: oscillate;
@@ -62,7 +191,7 @@ html, body, .root {
 }
 
 .centerContainer {
-  background-color: rgba(0,0,0, 0.9);
+  background-color: rgba(0, 0, 0, 0.9);
   height: 60%;
   width: 30%;
   min-width: 400px;
@@ -99,12 +228,44 @@ html, body, .root {
   border-radius: 50%;
 }
 
-
-
 .heading {
   margin-left: 3%;
   font-size: 18px;
   font-weight: 500;
+  user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.plus {
+  position: absolute;
+  left: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30%;
+  cursor: pointer;
+}
+
+.plus:active .plusIcon,
+.minus:active .minusIcon {
+  color: rgb(119, 119, 119)
+}
+
+.minus {
+  position: absolute;
+  left: 55%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30%;
+  cursor: pointer;
 }
 
 .staking {
@@ -113,6 +274,7 @@ html, body, .root {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .withdraw {
@@ -121,6 +283,7 @@ html, body, .root {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .input {
@@ -130,9 +293,14 @@ html, body, .root {
   height: 50px;
   border-bottom-left-radius: 15px;
   border-top-left-radius: 15px;
-  border: 1px solid #2e3234;
+  border: 2px solid #2e3234;
   outline: none;
   padding-left: 20px;
+  font-size: 16px;
+}
+
+.input:focus {
+  border: 2px solid #363b3d;
 }
 
 ::placeholder {
@@ -146,12 +314,20 @@ html, body, .root {
   background-color: #808080;
   border-bottom-right-radius: 15px;
   border-top-right-radius: 15px;
-  border: 1px solid #808080;
+  border: 2px solid #808080;
   color: white;
   display: flex;
   justify-content: space-around;
   align-items: center;
   cursor: pointer;
+}
+
+.button:hover {
+  background-color: #9c9c9c;
+}
+
+.button:active {
+  background-color: #929292;
 }
 
 .icon {
@@ -179,6 +355,12 @@ html, body, .root {
   color: white;
   font-size: 16px;
   font-weight: 500;
+  user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 .claimRewardsButton {
@@ -191,6 +373,15 @@ html, body, .root {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  border: 2px solid #808080;
+}
+
+.claimRewardsButton:hover {
+  background-color: #9c9c9c;
+}
+
+.claimRewardsButton:active {
+  background-color: #929292;
 }
 
 .amountStaked {
@@ -210,6 +401,12 @@ html, body, .root {
   background-color: #7a7a7a;
   display: flex;
   justify-content: flex-start;
+  user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 .vault {
@@ -226,10 +423,15 @@ html, body, .root {
   color: white;
   font-weight: 500;
   font-size: 16px;
-} 
+}
 
 
 @keyframes oscillate {
-  0% {left: 13%}
-  100% {left: 17%}
+  0% {
+    left: 13%
+  }
+
+  100% {
+    left: 17%
+  }
 }
