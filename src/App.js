@@ -4,7 +4,7 @@ import logo from "./assets/logo.png";
 import claimRewardsIcon from "./assets/claimReward.png";
 import vault from "./assets/vault.png";
 import { useEffect, useState } from "react";
-import { ethers } from "ethers";
+import { BigNumber, ethers } from "ethers";
 import { useAlert } from "react-alert";
 import {
   CONTRACT_ADDRESS,
@@ -74,7 +74,6 @@ function App() {
           try {
             const contract = new ethers.Contract(CONTRACT_ADDRESS, abi, signer);
             setContract(contract);
-            console.log("success", contract);
             alert.success("Connected to MetaMask");
           } catch (err) {
             alert.error("Something went wrong!");
@@ -167,6 +166,7 @@ function App() {
 
   const parseRewards = () => {
     let num = unclaimedRewards / 10 ** 15 + "";
+    console.log(unclaimedRewards);
     if (num.length <= 3) return 0 + "." + num;
     return num.slice(0, num.length - 3) + "." + num.slice(num.length - 3);
   };
@@ -205,16 +205,16 @@ function App() {
       </div>
       <div className="container">
         <div className="img1Container">
-          <img src={img1} className="image1" alt={"image"} />
+          <img src={img1} className="image1" alt={"image1"} />
         </div>
         <div className="img2Container">
-          <img src={img2} className="image2" alt={"image"} />
+          <img src={img2} className="image2" alt={"image2"} />
         </div>
         <div className="img3Container">
-          <img src={img3} className="image3" alt={"image"} />
+          <img src={img3} className="image3" alt={"image3"} />
         </div>
         <div className="img4Container">
-          <img src={img5} className="image4" alt={"image"} />
+          <img src={img5} className="image4" alt={"image4"} />
         </div>
         <div className="centerContainer">
           <div className="headerContainer">
