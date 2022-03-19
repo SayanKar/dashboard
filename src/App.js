@@ -1,26 +1,48 @@
 import "./App.css";
-import { HiPlus, HiMinus } from "react-icons/hi";
 import ReactTooltip from "react-tooltip";
 import logo from "./assets/logo.png";
-import stakeIcon from "./assets/stake.png";
-import withdrawIcon from "./assets/withdraw.png";
 import claimRewardsIcon from "./assets/claimReward.png";
 import vault from "./assets/vault.png";
 import { useEffect, useState } from "react";
 import { ethers } from "ethers";
-import { abi } from "./abi.js";
 import { useAlert } from "react-alert";
-
-const CONTRACT_ADDRESS = "0xA3eFcDc4BF8D0f58A6eaAA32841aD6Eb02B9A162";
+import { CONTRACT_ADDRESS, abi, NETWORKS_LIST, NETWORK } from "./config.js";
 
 function App() {
   const alert = useAlert();
-  const [stakeAmount, setStakeAmount] = useState("");
-  const [withdrawAmount, setWithdrawAmount] = useState("");
   const [unclaimedRewards, setUnclaimedRewards] = useState(0);
   const [stakedNfts, setStakedNfts] = useState(0);
   const [contract, setContract] = useState();
   const [address, setAddress] = useState();
+
+  async function switchNetwork() {
+    try {
+      await window.ethereum.request({
+        method: "wallet_switchEthereumChain",
+        params: [{ chainId: NETWORKS_LIST[NETWORK]["chainId"] }],
+      });
+      alert.success("Switched to " + NETWORK + " network");
+      return true;
+    } catch (switchError) {
+      // This error code indicates that the chain has not been added to MetaMask.
+      if (switchError.code === 4902) {
+        try {
+          await window.ethereum.request({
+            method: "wallet_addEthereumChain",
+            params: [NETWORKS_LIST[NETWORK]],
+          });
+          alert.success("Added network successfully");
+          return true;
+        } catch (addError) {
+          console.log(addError);
+          alert.error("Failed to add Network");
+        }
+      }
+      console.log(switchError);
+      alert.error("Failed to add " + NETWORK + " network");
+      return false;
+    }
+  }
 
   async function connect() {
     console.log("connectCalled");
@@ -30,6 +52,8 @@ function App() {
     } else {
       try {
         await window.ethereum.request({ method: "eth_requestAccounts" });
+        let switchNetworkSucces = switchNetwork();
+        if (!switchNetworkSucces) return;
         try {
           const provider = new ethers.providers.Web3Provider(window.ethereum);
           const signer = provider.getSigner();
@@ -55,41 +79,13 @@ function App() {
     }
   }
 
-  const onStake = async () => {
+  const onRegister = async () => {
     if (contract) {
-      if (stakeAmount === "") {
-        alert.error("Stake amount can be Integers between 1 to 100");
-        return;
-      }
       try {
-        let txn = await contract.Stake(parseInt(stakeAmount));
+        let txn = await contract.Register();
         alert.info("Transction Submitted");
         await txn.wait();
         alert.success("Transaction Successful");
-        setStakeAmount("");
-        getUnclaimedRewards();
-        getStakedNfts();
-      } catch (err) {
-        console.log(err);
-        alert.error(err.error.message);
-      }
-    } else {
-      alert.error("Connect To MetaMask");
-    }
-  };
-
-  const onWithdraw = async () => {
-    if (contract) {
-      if (withdrawAmount === "") {
-        alert.error("Withdraw amount can be Integers between 1 to 100");
-        return;
-      }
-      try {
-        let txn = await contract.Withdraw(parseInt(withdrawAmount));
-        alert.info("Transction Submitted");
-        await txn.wait();
-        alert.success("Transaction Succesful");
-        setWithdrawAmount("");
         getUnclaimedRewards();
         getStakedNfts();
       } catch (err) {
@@ -133,7 +129,7 @@ function App() {
   const getUnclaimedRewards = async () => {
     if (contract && address) {
       try {
-        let response = await contract.GetUnclaimedRewards(address);
+        let response = await contract.CheckUnclaimedRewards(address);
         setUnclaimedRewards(response * 1);
       } catch (err) {
         console.log(err);
@@ -144,38 +140,23 @@ function App() {
   useEffect(() => {
     getUnclaimedRewards();
     getStakedNfts();
+    const interval = setInterval(() => {
+      getUnclaimedRewards();
+      getStakedNfts();
+    }, 60000);
+    return () => {
+      clearInterval(interval);
+    };
   }, [contract, address]);
-
-  const onStakeAmountChange = (value) => {
-    if (value === "") setStakeAmount("");
-    else if (!isNaN(value) && value >= 1 && value <= 100)
-      setStakeAmount(parseInt(value));
-  };
-
-  const onWithdrawAmountChange = (value) => {
-    if (value === "") setWithdrawAmount("");
-    else if (!isNaN(value) && value >= 1 && value <= 100)
-      setWithdrawAmount(parseInt(value));
-  };
-
-  const incVal = (idx) => {
-    if (idx === 1) {
-      onWithdrawAmountChange(withdrawAmount + 1);
-    } else {
-      onStakeAmountChange(stakeAmount + 1);
-    }
-  };
-
-  const decVal = (idx) => {
-    if (idx === 1) {
-      onWithdrawAmountChange(withdrawAmount - 1);
-    } else {
-      onStakeAmountChange(stakeAmount - 1);
-    }
-  };
 
   const displayAdd = (add) => {
     return add.substring(0, 5) + "..." + add.substring(add.length - 4);
+  };
+
+  const parseRewards = () => {
+    let num = unclaimedRewards / 10 ** 15 + "";
+    if (num.length <= 3) return 0 + "." + num;
+    return num.slice(0, num.length - 3) + "." + num.slice(num.length - 3);
   };
 
   return (
@@ -200,7 +181,7 @@ function App() {
         </div>
         <div className="rightNavContainer">
           {!address ? (
-            <div className="connectButton" tabIndex="1" onClick={connect}>
+            <div className="connectButton" tabIndex={1} onClick={connect}>
               Connect To Metamask
             </div>
           ) : (
@@ -221,56 +202,20 @@ function App() {
             </div>
             <div className="heading">DASHBOARD</div>
           </div>
-          <div className="staking">
-            <div className="plus" tabIndex={1} onClick={() => incVal(0)}>
-              <HiPlus className="plusIcon" />
-            </div>
-            <div className="minus" tabIndex={1} onClick={() => decVal(0)}>
-              <HiMinus className="minusIcon" />
-            </div>
-            <input
-              type="text"
-              placeholder="Amount to stake"
-              className="input"
-              value={stakeAmount}
-              onChange={(e) => onStakeAmountChange(e.target.value)}
-            ></input>
-            <button
-              className="button"
-              data-tip="Stake"
-              tabIndex={2}
-              onClick={onStake}
+          <div className="register">
+            <div
+              className="registerButton"
+              tabIndex={1}
+              data-tip="Register NFTs for rewards"
+              onClick={onRegister}
             >
-              <img src={stakeIcon} alt="stake icon" className="icon" />
-            </button>
-          </div>
-          <div className="withdraw">
-            <div className="plus" tabIndex={1} onClick={() => incVal(1)}>
-              <HiPlus className="plusIcon" />
+              Register
             </div>
-            <div className="minus" tabIndex={1} onClick={() => decVal(1)}>
-              <HiMinus className="minusIcon" />
-            </div>
-            <input
-              type="text"
-              placeholder="Amount to withdraw"
-              className="input"
-              value={withdrawAmount}
-              onChange={(e) => onWithdrawAmountChange(e.target.value)}
-            ></input>
-            <button
-              className="button"
-              data-tip="Withdraw"
-              tabIndex={3}
-              onClick={onWithdraw}
-            >
-              <img src={withdrawIcon} alt="withdraw icon" className="icon" />
-            </button>
           </div>
           <div className="rewardsAndInfo">
             <div className="rewardsContainer">
               <div className="reward">
-                {"Your unclaimed rewards : " + unclaimedRewards}
+                {"Your unclaimed rewards : " + parseRewards()}
               </div>
               <div
                 className="claimRewardsButton"
@@ -288,7 +233,7 @@ function App() {
               <div className="vaultContainer">
                 <img src={vault} alt="vault icon" className="vault" />
                 <div className="valueContainer">
-                  {stakedNfts + " / 100 Staked"}
+                  {stakedNfts + " / 100 nodes"}
                 </div>
               </div>
             </div>
