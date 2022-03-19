@@ -13,3 +13,5 @@ export const NETWORKS_LIST = {
     rpcUrls: ["https://rinkeby.infura.io/v3/"],
   },
 };
+export const LINK_MINTPAGE = "https://1out100.com/mint";
+export const LINK_HOMEPAGE = "https://1out100.com";

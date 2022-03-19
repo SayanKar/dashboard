@@ -1,7 +1,7 @@
 html, body, .root {
   width: 100%;
   height: 100%;
-  background-color: black;
+  background-color: grey;
   color: white;
 }
 
@@ -160,19 +160,6 @@ img {
   left: 11%;
 }
 
-.bgCircle2 {
-  height: 100px;
-  width: 100px;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.3);
-  position: absolute;
-  background-image:
-    linear-gradient(to bottom right,
-      rgba(255, 255, 255, 0.3), black);
-  bottom: 18%;
-  right: 15%;
-}
-
 .bgCircle3 {
   height: 130px;
   width: 130px;
@@ -182,12 +169,52 @@ img {
   background-image:
     linear-gradient(to bottom right,
       rgba(255, 255, 255, 0.3), black);
-  bottom: 25%;
+  bottom: 22%;
   left: 15%;
   animation-name: oscillate;
   animation-duration: 5s;
   animation-direction: alternate;
   animation-iteration-count: infinite;
+}
+
+.img1Container {
+  position: absolute;
+  left: 8%;
+  top: 19%;
+}
+
+.img2Container {
+  position: absolute;
+  right: 8%;
+  top: 13%;
+}
+
+.img3Container {
+  position: absolute;
+  bottom: 6%;
+  right: 8%;
+}
+
+.img4Container {
+  position: absolute;
+  bottom: 12%;
+  left: 8%;
+}
+
+.image1 {
+  height: 250px;
+}
+
+.image2 {
+  height: 300px;
+}
+
+.image3 {
+  height: 350px;
+}
+
+.image4 {
+  height: 200px;
 }
 
 .centerContainer {
@@ -224,7 +251,6 @@ img {
 .logo {
   height: 100%;
   max-height: 70px;
-  background-color: #808080;
   border-radius: 50%;
 }
 

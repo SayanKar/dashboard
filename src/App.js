@@ -6,7 +6,19 @@ import vault from "./assets/vault.png";
 import { useEffect, useState } from "react";
 import { ethers } from "ethers";
 import { useAlert } from "react-alert";
-import { CONTRACT_ADDRESS, abi, NETWORKS_LIST, NETWORK } from "./config.js";
+import {
+  CONTRACT_ADDRESS,
+  abi,
+  NETWORKS_LIST,
+  NETWORK,
+  LINK_HOMEPAGE,
+  LINK_MINTPAGE,
+} from "./config.js";
+import img1 from "./assets/img1.png";
+import img3 from "./assets/img3.png";
+import img2 from "./assets/img2.png";
+import img4 from "./assets/img4.png";
+import img5 from "./assets/img5.png";
 
 function App() {
   const alert = useAlert();
@@ -168,12 +180,12 @@ function App() {
           </div>
           <div className="navLinks">
             <div className="navLink">
-              <a href="#" className="link">
+              <a href={LINK_HOMEPAGE} className="link">
                 Home
               </a>
             </div>
             <div className="navLink">
-              <a href="#" className="link">
+              <a href={LINK_MINTPAGE} className="link">
                 Mint
               </a>
             </div>
@@ -192,13 +204,22 @@ function App() {
         </div>
       </div>
       <div className="container">
-        <div className="bgCircle1"></div>
-        <div className="bgCircle2"></div>
-        <div className="bgCircle3"></div>
+        <div className="img1Container">
+          <img src={img1} className="image1" alt={"image"} />
+        </div>
+        <div className="img2Container">
+          <img src={img2} className="image2" alt={"image"} />
+        </div>
+        <div className="img3Container">
+          <img src={img3} className="image3" alt={"image"} />
+        </div>
+        <div className="img4Container">
+          <img src={img5} className="image4" alt={"image"} />
+        </div>
         <div className="centerContainer">
           <div className="headerContainer">
             <div className="logoContainer">
-              <img src={logo} alt="logo" className="logo" />
+              <img src={img4} alt="logo" className="logo" />
             </div>
             <div className="heading">DASHBOARD</div>
           </div>
@@ -215,7 +236,7 @@ function App() {
           <div className="rewardsAndInfo">
             <div className="rewardsContainer">
               <div className="reward">
-                {"Your unclaimed rewards : " + parseRewards()}
+                {"Unclaimed rewards : " + parseRewards() + " FTM"}
               </div>
               <div
                 className="claimRewardsButton"
