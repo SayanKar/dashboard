@@ -64,7 +64,7 @@ function App() {
     } else {
       try {
         await window.ethereum.request({ method: "eth_requestAccounts" });
-        let switchNetworkSucces = switchNetwork();
+        let switchNetworkSucces = await switchNetwork();
         if (!switchNetworkSucces) return;
         try {
           const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -74,7 +74,7 @@ function App() {
           try {
             const contract = new ethers.Contract(CONTRACT_ADDRESS, abi, signer);
             setContract(contract);
-            console.log("success");
+            console.log("success", contract);
             alert.success("Connected to MetaMask");
           } catch (err) {
             alert.error("Something went wrong!");
