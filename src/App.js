@@ -101,7 +101,12 @@ function App() {
         getStakedNfts();
       } catch (err) {
         console.log("Error on Register", err);
-        alert.error(err.error.message);
+        if(err.data?.message)
+          alert.error(err.data.message);
+        else if(err.err?.message)
+          alert.error(err.error.message);
+        else
+          alert.error("Something went wrong");
       }
     } else {
       alert.error("Connect To MetaMask");
@@ -119,7 +124,12 @@ function App() {
         getStakedNfts();
       } catch (err) {
         console.log("Error on Claim",err);
-        alert.error(err.error.message);
+        if(err.data?.message)
+          alert.error(err.data.message);
+        else if(err.err?.message)
+          alert.error(err.error.message);
+        else
+          alert.error("Something went wrong");
       }
     } else {
       alert.error("Connect To MetaMask");
