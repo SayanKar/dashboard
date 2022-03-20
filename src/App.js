@@ -1,8 +1,8 @@
 import "./App.css";
 import ReactTooltip from "react-tooltip";
-import logo from "./assets/logo.png";
-import claimRewardsIcon from "./assets/claimReward.png";
-import vault from "./assets/vault.png";
+import logo from "./assets/logo.webp";
+import claimRewardsIcon from "./assets/claimReward.webp";
+import vault from "./assets/vault.webp";
 import { useEffect, useState } from "react";
 import { BigNumber, ethers } from "ethers";
 import { useAlert } from "react-alert";
@@ -14,11 +14,11 @@ import {
   LINK_HOMEPAGE,
   LINK_MINTPAGE,
 } from "./config.js";
-import img1 from "./assets/img1.png";
-import img3 from "./assets/img3.png";
-import img2 from "./assets/img2.png";
-import img4 from "./assets/img4.png";
-import img5 from "./assets/img5.png";
+import img1 from "./assets/img1.webp";
+import img3 from "./assets/img3.webp";
+import img2 from "./assets/img2.webp";
+import img4 from "./assets/img4.webp";
+import img5 from "./assets/img5.webp";
 
 function App() {
   const alert = useAlert();
@@ -142,7 +142,7 @@ function App() {
       try {
         let response = await contract.CheckUnclaimedRewards(address);
         if(response.lte(1000_000_000_000_000_000_000_000n)) {
-          let val = response.div(10n**12n) * 1;
+          let val = response.div(1000_000_000_000n) * 1;
           setUnclaimedRewards(val);
         }
         else
