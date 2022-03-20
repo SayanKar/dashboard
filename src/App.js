@@ -173,7 +173,7 @@ function App() {
   const parseRewards = () => {
     if(unclaimedRewards === 0) return "0.00";
     if(unclaimedRewards === -1) return " > 1 million";
-    return (parseFloat(unclaimedRewards) / 100).toFixed(6);
+    return (parseFloat(unclaimedRewards) / 1000000).toFixed(6);
   };
 
   return (
