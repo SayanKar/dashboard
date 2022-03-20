@@ -1,4 +1,4 @@
-export const CONTRACT_ADDRESS = "0xE368DE907882d3cFE524B6daFa575e14158e9bAA";
+export const CONTRACT_ADDRESS = "0x1dA7E6d39d5E1fC09AcC26Fc4cBeE9871940B54a";
 export const NETWORK = "rinkeby"; // "rinkeby" | "fantom"
 export { abi } from "./abi";
 export const NETWORKS_LIST = {
