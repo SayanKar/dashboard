@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+#Dashboard for 1out100
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This repo contains the frontend of 1out100 dashboard, where u can register nfts for rewards.
 
-## Available Scripts
+Before running make appropriate changes to the config file
 
-In the project directory, you can run:
+```javascript
+// Change the contract address to your address 
+export const CONTRACT_ADDRESS = "0x1dA7E6d39d5E1fC09AcC26Fc4cBeE9871940B54a";
 
-### `yarn start`
+// Set the netwwork to rinkeby or fantom or any other network in NETWORKS_LIST
+export const NETWORK = "rinkeby"; // "rinkeby" | "fantom"
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+// Make sure to put the updated abi in abi.js file
+export { abi } from "./abi";
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+// Make sure the network u wanna deploy is in the NETWORKS_LIST object.
+export const NETWORKS_LIST = {
+  rinkeby: {
+    chainId: "0x4",
+    chainName: "rinkeby",
+    nativeCurrency: {
+      name: "Ether",
+      symbol: "ETH",
+      decimals: 18,
+    },
+    rpcUrls: ["https://rinkeby.infura.io/v3/"],
+  },
+  fantom: {
+    chainId: "0xFA",
+    chainName: "fantom",
+    nativeCurrency: {
+      name: "fantom",
+      symbol: "FTM",
+      decimals: 18,
+    },
+    rpcUrls: ["https://rpcapi.fantom.network/"],
+  },
+};
 
-### `yarn test`
+// Link to Minting site 
+export const LINK_MINTPAGE = "https://1out100.com/mint";
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+// Link to Home page
+export const LINK_HOMEPAGE = "https://1out100.com";
+```
 
-### `yarn build`
+Tu run on local system follow the following steps:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone the repo, move in to the clone directory
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+git clone https://github.com/SayanKar/dashboard.git
+cd dashboard
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. Install the packages, (you need to have node and npm installed)
 
-### `yarn eject`
+```bash
+npm install
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. Run the app in the development mode.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Open http://localhost:3000 to view it in your browser.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
