@@ -100,7 +100,7 @@ function App() {
         getUnclaimedRewards();
         getStakedNfts();
       } catch (err) {
-        console.log(err);
+        console.log("Error on Register", err);
         alert.error(err.error.message);
       }
     } else {
@@ -118,7 +118,7 @@ function App() {
         getUnclaimedRewards();
         getStakedNfts();
       } catch (err) {
-        console.log(err);
+        console.log("Error on Claim",err);
         alert.error(err.error.message);
       }
     } else {
@@ -129,10 +129,10 @@ function App() {
   const getStakedNfts = async () => {
     if (contract && address) {
       try {
-        let response = await contract.GetStakingMultiplier(address);
+        let response = await contract.GetMultiplier(address);
         setStakedNfts(response * 1);
       } catch (err) {
-        console.log(err);
+        console.log("Error geting stakednfts",err);
       }
     }
   };
@@ -141,14 +141,15 @@ function App() {
     if (contract && address) {
       try {
         let response = await contract.CheckUnclaimedRewards(address);
-        let val = response.div(10n**16n) * 1;
-        if(response.lte(10n**27n))
+        if(response.lte(10n**27n)) {
+          let val = response.div(10n**16n) * 1;
           setUnclaimedRewards(val);
+        }
         else
           setUnclaimedRewards(-1);
       } catch (err) {
         setUnclaimedRewards(0);
-        console.log(err);
+        console.log("Error geting unclaimed rewards",err);
       }
     }
   };
@@ -159,7 +160,7 @@ function App() {
     const interval = setInterval(() => {
       getUnclaimedRewards();
       getStakedNfts();
-    }, 60000);
+    }, 20000);
     return () => {
       clearInterval(interval);
     };
