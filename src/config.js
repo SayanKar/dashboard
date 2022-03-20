@@ -1,5 +1,5 @@
-export const CONTRACT_ADDRESS = "0x1dA7E6d39d5E1fC09AcC26Fc4cBeE9871940B54a";
-export const NETWORK = "rinkeby"; // "rinkeby" | "fantom"
+export const CONTRACT_ADDRESS = "0x5d22DC1a3E031Fb7392170AeC0193256877bE913";
+export const NETWORK = "fantom"; // "rinkeby" | "fantom"
 export { abi } from "./abi";
 export const NETWORKS_LIST = {
   rinkeby: {
@@ -20,7 +20,7 @@ export const NETWORKS_LIST = {
       symbol: "FTM",
       decimals: 18,
     },
-    rpcUrls: ["https://rpcapi.fantom.network/"],
+    rpcUrls: ["https://rpc.ftm.tools/"],
   },
 };
 export const LINK_MINTPAGE = "https://1out100.com/mint";
