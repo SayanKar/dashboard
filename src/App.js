@@ -141,8 +141,8 @@ function App() {
     if (contract && address) {
       try {
         let response = await contract.CheckUnclaimedRewards(address);
-        if(response.lte(1000_000_000_000_000_000_000_000_000n)) {
-          let val = response.div(10n**16n) * 1;
+        if(response.lte(1000_000_000_000_000_000_000_000n)) {
+          let val = response.div(10n**12n) * 1;
           setUnclaimedRewards(val);
         }
         else
@@ -172,8 +172,8 @@ function App() {
 
   const parseRewards = () => {
     if(unclaimedRewards === 0) return "0.00";
-    if(unclaimedRewards === -1) return " > 1 billion";
-    return (parseFloat(unclaimedRewards) / 100).toFixed(2);
+    if(unclaimedRewards === -1) return " > 1 million";
+    return (parseFloat(unclaimedRewards) / 100).toFixed(6);
   };
 
   return (
