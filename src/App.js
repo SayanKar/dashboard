@@ -141,7 +141,7 @@ function App() {
     if (contract && address) {
       try {
         let response = await contract.CheckUnclaimedRewards(address);
-        if(response.lte(10n**27n)) {
+        if(response.lte(1000_000_000_000_000_000_000_000_000n)) {
           let val = response.div(10n**16n) * 1;
           setUnclaimedRewards(val);
         }
