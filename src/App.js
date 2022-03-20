@@ -105,7 +105,9 @@ function App() {
           alert.error(err.data.message);
         else if(err.err?.message)
           alert.error(err.error.message);
-        else
+        else if(err.message)
+          alert.error(err.message);
+        else 
           alert.error("Something went wrong");
       }
     } else {
@@ -128,7 +130,9 @@ function App() {
           alert.error(err.data.message);
         else if(err.err?.message)
           alert.error(err.error.message);
-        else
+        else if(err.message)
+          alert.error(err.message);
+        else 
           alert.error("Something went wrong");
       }
     } else {
