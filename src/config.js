@@ -1,5 +1,5 @@
-export const CONTRACT_ADDRESS = "0x5d22DC1a3E031Fb7392170AeC0193256877bE913";
-export const NETWORK = "fantom"; // "rinkeby" | "fantom"
+export const CONTRACT_ADDRESS = "0xad1eefba627c62ca534030b5ee2350763e6e30fe";
+export const NETWORK = "rinkeby"; // "rinkeby" | "fantom"
 export { abi } from "./abi";
 export const NETWORKS_LIST = {
   rinkeby: {

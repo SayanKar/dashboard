@@ -103,7 +103,7 @@ function App() {
         console.log("Error on Register", err);
         if(err.data?.message)
           alert.error(err.data.message);
-        else if(err.err?.message)
+        else if(err.error?.message)
           alert.error(err.error.message);
         else if(err.message)
           alert.error(err.message);
@@ -128,7 +128,7 @@ function App() {
         console.log("Error on Claim",err);
         if(err.data?.message)
           alert.error(err.data.message);
-        else if(err.err?.message)
+        else if(err.error?.message)
           alert.error(err.error.message);
         else if(err.message)
           alert.error(err.message);
