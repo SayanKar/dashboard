@@ -1,5 +1,5 @@
-export const CONTRACT_ADDRESS = "0xad1eefba627c62ca534030b5ee2350763e6e30fe";
-export const NETWORK = "rinkeby"; // "rinkeby" | "fantom"
+export const CONTRACT_ADDRESS = "0x75e66366748F565a884180C3E9096aA528B6Bd7f";
+export const NETWORK = "fantom"; // "rinkeby" | "fantom"
 export { abi } from "./abi";
 export const NETWORKS_LIST = {
   rinkeby: {
@@ -23,5 +23,5 @@ export const NETWORKS_LIST = {
     rpcUrls: ["https://rpc.ftm.tools/"],
   },
 };
-export const LINK_MINTPAGE = "https://1out100.com/mint";
+export const LINK_MINTPAGE = "https://mint.1out100.com/";
 export const LINK_HOMEPAGE = "https://1out100.com";

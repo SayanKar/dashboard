@@ -102,12 +102,12 @@ img {
 .connectButton {
   width: 200px;
   height: 44px;
-  background-color: palevioletred;
+  background-color: gray;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 15px;
-  border: 2px solid rgb(209, 56, 107);
+  border: 2px solid rgb(70, 69, 69);
   color: white;
   cursor: pointer;
   user-drag: none;
@@ -123,12 +123,12 @@ img {
   font-size: 18px;
   font-weight: 400;
   height: 44px;
-  background-color: palevioletred;
+  background-color: gray;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 15px;
-  border: 2px solid rgb(209, 56, 107);
+  border: 2px solid  rgb(70, 69, 69);
   color: white;
   cursor: pointer;
   user-drag: none;
@@ -144,7 +144,7 @@ img {
 }
 
 .connectButton:active {
-  background-color: rgb(253, 153, 186);
+  background-color: rgb(189, 189, 189);
 }
 
 .bgCircle1 {
