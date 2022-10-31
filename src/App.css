@@ -34,10 +34,13 @@ img {
   align-items: center;
   height: 8%;
   padding: 10px 3%;
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
+  border-radius: 15px;
   margin: 0 7%;
   background-color: white;
+}
+
+.navbar:hover {
+  border-radius: 13px;
 }
 
 .leftNavContainer {
