@@ -22,6 +22,16 @@ export const NETWORKS_LIST = {
     },
     rpcUrls: ["https://rpc.ftm.tools/"],
   },
+  mainnet_eth: {
+    chainId: "0x1",
+    chainName: "Ethereum Mainnet",
+    nativeCurrency: {
+      name: "Ether",
+      symbol: "ETH",
+      decimals: 18,
+    },
+    rpcUrls: ["https://mainnet.infura.io/v3/"],
+  },
 };
 export const LINK_MINTPAGE = "https://mint.1out100.com/";
 export const LINK_HOMEPAGE = "https://1out100.com";
